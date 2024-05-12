@@ -1,20 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import * as faceapi from 'face-api.js';
-import sampleVideo from './angry.mp4'; // Import your sample video
+import sampleVideo from './gg.mp4'; // Import your sample video
 import "./app.css"
-import LineChart from './Chart';
+import LineChart from './LineChart';
+import { statusData } from './data';
+import PieChart from './PieChart';
+import AnalyticsUI from './Analitics';
 
 
-let statusIcons = {
-	default: { emoji: '😐', color: '#02c19c' },
-	neutral: { emoji: '😐', color: '#54adad' },
-	happy: { emoji: '😀', color: '#148f77' },
-	sad: { emoji: '😥', color: '#767e7e' },
-	angry: { emoji: '😠', color: '#b64518' },
-	fearful: { emoji: '😨', color: '#90931d' },
-	disgusted: { emoji: '🤢', color: '#1a8d1a' },
-	surprised: { emoji: '😲', color: '#1230ce' },
-}
 
 const App = () => {
 	const [history, setHistory] = useState([]);
@@ -73,7 +66,7 @@ const App = () => {
 				maxProbability = probability;
 			  }
 			}
-			setHistory(p => [...p, { expression: maxExpression, probability: maxProbability }]);
+			setHistory(p => [...p, { expression: maxExpression, probability: maxProbability, time: new Date().toLocaleTimeString() }]);
 			setStatus(maxExpression);
 		  } else {
 			setStatus('No face detected');
@@ -96,10 +89,14 @@ const App = () => {
     <div id="app" className="app">
       <video style={{display: "none"}} id="video" width="540" height="405" muted controls></video>
       <canvas id="canvas"></canvas>
-      	<div className='expression' style={{border: `1px solid ${statusIcons[status]?.color}`, color: statusIcons[status]?.color}} >
-			<p>{status}</p> {statusIcons[status]?.emoji}
+      	<div className='expression' style={{border: `1px solid ${statusData[status]?.color}`, color: statusData[status]?.color}} >
+			<p>{status}</p> {statusData[status]?.emoji}
 		</div>
-		<LineChart finalData={history}/>
+		<div className='graphs'>
+			<AnalyticsUI facialExpressionData={history}/>
+			<LineChart finalData={history}/>
+			<PieChart finalData={history}/>
+		</div>
    	</div>
   );
 };

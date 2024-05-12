@@ -1,0 +1,61 @@
+.a-ui {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 1rem;
+}
+
+.a-card {
+  flex: 1;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.total-data-points {
+  background-color: #3b5998;
+}
+
+.average-probability {
+  background-color: #4caf50;
+}
+
+.most-frequent-expression {
+  text-align: center;
+}
+
+.expression-counts {
+  background-color: #ff5722;
+}
+
+.a-title {
+  font-size: 18px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.a-value {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.counts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.expression-count {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.expression-count .emoji {
+  margin-right: 5px;
+}
