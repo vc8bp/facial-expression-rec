@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './analiticsStyle.css';
 import { statusData } from './data';
 
 const AnalyticsUI = ({ facialExpressionData }) => {

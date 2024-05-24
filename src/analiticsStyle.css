@@ -1,3 +1,22 @@
+.top{
+  display: flex;
+  flex-wrap: wrap;
+  width: min(100%, 1200px);
+
+
+}
+
+@media screen and (max-width: 800px) {
+  .top{
+    flex-direction: column;
+  }
+}
+
+.top>* {
+
+  flex: 1;
+}
+
 .a-ui {
   display: flex;
   flex-wrap: wrap;
@@ -7,6 +26,7 @@
 
 .a-card {
   flex: 1;
+  min-width: min(200px, 90%);
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
